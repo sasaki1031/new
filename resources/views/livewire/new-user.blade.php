@@ -1,32 +1,32 @@
-<div class="flex p-10 items-center flex-col bg-gray-50 rounded-lg shadow-md">
+<div class="flex p-10 items-center flex-col bg-white rounded-lg shadow-md">
 
-    <h1 class="text-4xl font-semibold text-gray-800 mb-6">User</h1>
+    <h1 class="text-4xl font-semibold text-black mb-6">New Pages</h1>
 
     @if (session()->has('message'))
-        <div class="alert alert-success bg-green-500 text-white mb-4 rounded-lg px-4 py-2">
+        <div class="alert alert-success bg-white text-black mb-4 rounded-lg px-4 py-2">
             {{ session('message') }}
         </div>
     @endif
 
     <!-- Input Fields for Name, Email, and Password -->
     <div class="w-full sm:w-1/2 mt-6">
-        <input wire:model="name" type="text" id="name" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm" placeholder="Name" required />
+        <input wire:model="name" type="text" id="name" class="bg-white border text-black text-sm rounded-lg block w-full p-3" placeholder="Name" required />
         @error('name') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
     </div>
 
     <div class="w-full sm:w-1/2 mt-6">
-        <input wire:model="email" type="text" id="email" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm" placeholder="Email" required />
+        <input wire:model="email" type="text" id="email" class="bg-white border text-black text-sm rounded-lg block w-full p-3" placeholder="Email" required />
         @error('email') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
     </div>
 
     <div class="w-full sm:w-1/2 mt-6">
-        <input wire:model="password" type="password" id="password" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 shadow-sm" placeholder="Password" required />
+        <input wire:model="password" type="password" id="password" class="bg-white border text-black text-sm rounded-lg block w-full p-3" placeholder="Password" required />
         @error('password') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
     </div>
 
     <!-- Submit Button -->
     <div class="mt-6 w-full sm:w-auto">
-        <button wire:loading.remove type="submit" wire:click="submit" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-3 transition duration-200 transform hover:scale-105">
+        <button wire:loading.remove type="submit" wire:click="submit" class="bg-white text-black font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-3">
             Submit
         </button>
 
@@ -42,24 +42,24 @@
 
     <!-- Table and Pagination Section -->
     <div class="mt-8 w-full">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Registered Users</h2>
+        <h2 class="text-2xl font-semibold text-black mb-4">Registered Users</h2>
         <div class="overflow-x-auto bg-white rounded-lg shadow-md">
-            <table class="w-full bg-white border border-gray-200">
+            <table class="w-full bg-white border">
                 <thead>
-                    <tr class="text-left bg-gray-100">
-                        <th class="py-3 px-4 text-gray-700">Name</th>
-                        <th class="py-3 px-4 text-gray-700">Email</th>
-                        <th class="py-3 px-4 text-gray-700">Actions</th>
+                    <tr class="text-left">
+                        <th class="py-3 px-4 text-black">Name</th>
+                        <th class="py-3 px-4 text-black">Email</th>
+                        <th class="py-3 px-4 text-black">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
                         <tr class="hover:bg-gray-50">
-                            <td class="py-2 px-4 border-t border-gray-200">{{ $user->name }}</td>
-                            <td class="py-2 px-4 border-t border-gray-200">{{ $user->email }}</td>
-                            <td class="py-2 px-4 border-t border-gray-200 text-right space-x-2">
-                                <button wire:click="editUser({{ $user->id }})" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Update</button>
-                                <button wire:click="confirmDelete({{ $user->id }})" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2">Delete</button>
+                            <td class="py-2 px-4 border-t">{{ $user->name }}</td>
+                            <td class="py-2 px-4 border-t">{{ $user->email }}</td>
+                            <td class="py-2 px-4 border-t text-right space-x-2">
+                                <button wire:click="editUser({{ $user->id }})" class="bg-white text-black font-medium rounded-lg text-sm px-4 py-2">Update</button>
+                                <button wire:click="confirmDelete({{ $user->id }})" class="bg-white text-black font-medium rounded-lg text-sm px-4 py-2">Delete</button>
                             </td>
                         </tr>
                     @endforeach
@@ -76,7 +76,7 @@
     @if($isEditModalOpen)
         <div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
             <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-                <h3 class="text-lg font-medium text-gray-900 text-center">Edit User</h3>
+                <h3 class="text-lg font-medium text-black text-center">Edit User</h3>
                 <div class="mt-4">
                     <input wire:model="editName" type="text" placeholder="Name" class="mb-3 px-3 py-2 border rounded-md w-full">
                     @error('editName') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
@@ -85,8 +85,8 @@
                     @error('editEmail') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
                 <div class="flex justify-center items-center space-x-4 mt-4">
-                    <button wire:click="updateUser" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none">Update</button>
-                    <button wire:click="closeEditModal" class="px-4 py-2 bg-gray-200 text-black rounded-md hover:bg-gray-300 focus:outline-none">Cancel</button>
+                    <button wire:click="updateUser" class="px-4 py-2 bg-white text-black rounded-md">Update</button>
+                    <button wire:click="closeEditModal" class="px-4 py-2 bg-gray-200 text-black rounded-md">Cancel</button>
                 </div>
             </div>
         </div>
@@ -96,11 +96,11 @@
     @if($isDeleteModalOpen)
         <div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
             <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-                <h3 class="text-lg font-medium text-gray-900 text-center">Confirm Delete</h3>
+                <h3 class="text-lg font-medium text-black text-center">Confirm Delete</h3>
                 <p class="text-sm text-gray-500 mt-2 text-center">Are you sure you want to delete this user? This action cannot be undone.</p>
                 <div class="flex justify-center items-center space-x-4 mt-6">
-                    <button wire:click="deleteUser" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none">Delete</button>
-                    <button wire:click="$set('isDeleteModalOpen', false)" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none">Cancel</button>
+                    <button wire:click="deleteUser" class="px-4 py-2 bg-white text-black rounded-md">Delete</button>
+                    <button wire:click="$set('isDeleteModalOpen', false)" class="px-4 py-2 bg-gray-500 text-white rounded-md">Cancel</button>
                 </div>
             </div>
         </div>
